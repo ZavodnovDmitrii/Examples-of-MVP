@@ -8,8 +8,8 @@ protocol Builder {
 class MainBuilder: Builder {
     static func createMainBuilder() -> UIViewController {
         let view = MainViewController()
-        let person = Person(firstName: "David", lastName: "Blain")
-        let presenter = MainPresenter(view: view, person: person)
+        let netWorkService = NetWorckService()
+        let presenter = MainPresenter(view: view, netWorkService: netWorkService)
         view.presenter = presenter
         return view
     }

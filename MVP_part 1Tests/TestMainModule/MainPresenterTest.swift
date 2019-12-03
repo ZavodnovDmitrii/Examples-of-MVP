@@ -12,12 +12,12 @@ class MockView: MainViewProtocol {
 class MainPresenterTest: XCTestCase {
     
     var view: MockView!
-    var person: Person!
+    var person: Comment!
     var presenter: MainPresenter!
     
     override func setUp() {
         view = MockView()
-        person = Person(firstName: "Baz", lastName: "Bar")
+        person = Comment(firstName: "Baz", lastName: "Bar")
         presenter = MainPresenter(view: view, person: person)
     }
     
