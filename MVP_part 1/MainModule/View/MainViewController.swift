@@ -27,6 +27,12 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
         cell.textLabel?.text = comments?.body
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let comment = presenter.comments?[indexPath.row]
+        let detailViewController = MainBuilder.createDetailBuilder(comment: comment)
+        navigationController?.pushViewController(detailViewController, animated: true)
+    }
 }
 
 extension MainViewController: MainViewProtocol {
