@@ -5,10 +5,14 @@ class DetailViewController: UIViewController {
     
     @IBOutlet weak var CommentLabel: UILabel!
     var presenter: DetailViewPresenterProtocol!
-
+    
     override func viewDidLoad() {
-        super.viewDidLoad()
-        presenter.setComment()
+           super.viewDidLoad()
+           presenter.setComment()
+       }
+    
+    @IBAction func tapBackActionButton(_ sender: Any) {
+        presenter.tapPopToRoot()
     }
 }
 

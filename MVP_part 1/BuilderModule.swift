@@ -1,25 +1,25 @@
 
 import UIKit
 
-protocol Builder {
-    static func createMainBuilder() -> UIViewController
-    static func createDetailBuilder(comment: Comment?) -> UIViewController
+protocol AssemblyBuilderProtocol {
+    func createMainBuilder(router: RouterProtocol) -> UIViewController
+    func createDetailBuilder(comment: Comment?, router: RouterProtocol) -> UIViewController
 }
 
-class MainBuilder: Builder {
+class AssemblyBuilder: AssemblyBuilderProtocol {
     
-    static func createMainBuilder() -> UIViewController {
+    func createMainBuilder(router: RouterProtocol) -> UIViewController {
         let view = MainViewController()
         let netWorkService = NetWorckService()
-        let presenter = MainPresenter(view: view, netWorkService: netWorkService)
+        let presenter = MainPresenter(view: view, netWorkService: netWorkService, router: router)
         view.presenter = presenter
         return view
     }
     
-    static func createDetailBuilder(comment: Comment?) -> UIViewController {
+    func createDetailBuilder(comment: Comment?, router: RouterProtocol) -> UIViewController {
         let view = DetailViewController()
         let netWorkService = NetWorckService()
-        let presenter = DetailPresenter(view: view, netWorkService: netWorkService, comment: comment!)
+        let presenter = DetailPresenter(view: view, netWorkService: netWorkService, router: router, comment: comment!)
         view.presenter = presenter
         return view
     }
